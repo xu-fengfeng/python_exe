@@ -16,9 +16,14 @@ class MainWindow(QtWidgets.QWidget):
         self.ConfirmButton.clicked.connect(self.valueChange)
         self.ConfirmButton.show()
         
-        buttonLayout1 = QtWidgets.QVBoxLayout()
+        self.ExitButton = QtWidgets.QPushButton("&Exit")
+        self.ExitButton.clicked.connect(self.Exit)
+        
+        #buttonLayout1 = QtWidgets.QVBoxLayout()
+        buttonLayout1 = QtWidgets.QHBoxLayout()
         buttonLayout1.addWidget(self.ConfirmButton, QtCore.Qt.AlignTop)
-        buttonLayout1.addStretch()        
+        buttonLayout1.addWidget(self.ExitButton, QtCore.Qt.AlignTop)
+        #buttonLayout1.addStretch()        
         
         #mainLayout是主界面，addWidget把item添加到主界面
         mainLayout = QtWidgets.QGridLayout()
@@ -50,6 +55,9 @@ class MainWindow(QtWidgets.QWidget):
         #print (newlist)
         newstr = "".join(newlist)
         return newstr
+    
+    def Exit(self):
+        QtWidgets.QApplication.quit()
         
 if __name__ == '__main__':
     print ("start...")
