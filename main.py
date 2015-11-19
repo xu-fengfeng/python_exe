@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 import sys
 from PyQt5 import QtWidgets,QtCore,QtGui
+from PyQt5.uic import loadUi
 
-class MainWindow(QtWidgets.QWidget):
+
+class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
 
+        loadUi('mainwindow.ui', self)
+        
+        self.ConfirmButton.clicked.connect(self.valueChange)
+        self.ExitButton.clicked.connect(self.Exit)
+        
+        '''
         InputLabel = QtWidgets.QLabel("Input:")
         self.InputLine = QtWidgets.QLineEdit()
 
@@ -36,7 +44,7 @@ class MainWindow(QtWidgets.QWidget):
 
         self.setLayout(mainLayout)
         self.setWindowTitle("Ex1:Reverse string")
-        
+        '''        
     def valueChange(self):
         str = self.InputLine.text()
         
@@ -58,6 +66,7 @@ class MainWindow(QtWidgets.QWidget):
     
     def Exit(self):
         QtWidgets.QApplication.quit()
+    
         
 if __name__ == '__main__':
     print ("start...")
