@@ -5,11 +5,23 @@ from PyQt5.uic import loadUi
 
 class LatinPigGame(object):
     def __init__(self):
-        vowellist = "aeiuo"
+        self.vowellist = "aeiuo"
     def LatinPigChange(self,input):
         if not isinstance(input, str):
             print ("str is not a string")
-        return input
+        for i in input:
+            if i not in self.vowellist:
+                print ("%s is in vowel"%i)
+                index = input.index(i)
+                print (index)
+                
+                inputlist = list(input)
+                inputlist.remove(i)
+                
+                print (inputlist)
+                return "".join(inputlist) +"-ay"     #index
+            
+        return None
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -39,15 +51,25 @@ class MainWindow(QtWidgets.QMainWindow):
         newstr = "".join(newlist)
         return newstr
     def latinPigGame(self):
-        str = self.InputLine.text()
-        if str == "":
+        inputstr = self.InputLine.text()
+        if inputstr == "":
             print ("inputline is empty.")
         else:
-            print ("inputline = %s"%str)
+            print ("inputline = %s"%inputstr)
             lpg = LatinPigGame()
-            newstr = lpg.LatinPigChange(str)
+            outputstr = lpg.LatinPigChange(inputstr)
+            '''
+            index = lpg.LatinPigChange(inputstr)
+            print ("index = %d"%index)
+            if index == None:
+                outputstr = ""
+            else:
+                inputlist = list(inputstr)
+                outputlist = inputlist.pop(index)
+                outputstr = "".join(outputlist) 
+            '''
 
-            self.OutputLine.setText(newstr)
+            self.OutputLine.setText(outputstr)
     def Exit(self):
         QtWidgets.QApplication.quit()
         
