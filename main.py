@@ -23,6 +23,36 @@ class LatinPigGame(object):
             
         return None
 
+class PalindromeCheckGame():
+    def __init__(self):
+        pass
+    def PalindromeCheck(self, input):
+        if not isinstance(input, str):
+            print ("input is not a string")
+        lens = len(input)
+        print ("str len = %d"%lens)
+        if lens%2 == 0:
+            newstr1 = input[0:(int(lens/2))]
+            newstr2 = input[int(lens/2):]
+        else:
+            newstr1 = input[0:(int(lens/2))]
+            newstr2 = input[int(lens/2+1):]            
+
+        if newstr1 == newstr2:
+            resultstr = "Yes,it's a Palindrome string"
+        else:
+            resultstr = "No, it's not aPalindrome string"    
+        return resultstr
+
+class vowelCheckGame():
+    def __init__(self):
+        pass
+    def vowelCheck(self,input):
+        if not isinstance(input, str):
+           print ("input is not a string")        
+        
+
+
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
@@ -33,6 +63,26 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ExitButton.clicked.connect(self.Exit)
         self.LatinPigButton.clicked.connect(self.latinPigGame)
 
+        self.vowelcheck_Button.clicked.connect(self.vowelCheck)
+        self.palindrome_Button.clicked.connect(self.palindromeCheck)
+
+    def vowelCheck(self):
+        print ("in vowelCheck mode")
+        input = self.InputLine.text()
+        if input == "":
+            print ("inputline is empyt.")
+        QtWidgets.QMessageBox.information(self, "vowelCheckGame Result", "Null")
+
+    def palindromeCheck(self):
+        print ("in palindromeCheck mode")
+        input = self.InputLine.text()
+        if str == "":
+            print ("inputline is empyt.")
+                    
+        pcg = PalindromeCheckGame()
+        retstr = pcg.PalindromeCheck(input)
+        QtWidgets.QMessageBox.information(self, "PalindromeCheckGame Result",retstr)
+        
     def valueChange(self):
         str = self.InputLine.text()
         
