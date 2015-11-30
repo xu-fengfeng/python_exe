@@ -46,12 +46,26 @@ class PalindromeCheckGame():
 
 class vowelCheckGame():
     def __init__(self):
-        pass
+        self.num_a = 0
+        self.num_e = 0
+        self.num_u = 0
+        self.num_i = 0
+        self.num_o = 0
     def vowelCheck(self,input):
         if not isinstance(input, str):
            print ("input is not a string")        
-        
-
+        for i in range(len(input)):
+            if input[i] == 'a':
+                self.num_a+=1
+            if input[i] == 'e':
+                self.num_e+=1            
+            if input[i] == 'u':
+                self.num_u+=1
+            if input[i] == 'i':
+                self.num_i+=1               
+            if input[i] == 'o':
+                self.num_o+=1
+        return (self.num_a, self.num_e, self.num_u, self.num_i, self.num_o)  
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -71,7 +85,10 @@ class MainWindow(QtWidgets.QMainWindow):
         input = self.InputLine.text()
         if input == "":
             print ("inputline is empyt.")
-        QtWidgets.QMessageBox.information(self, "vowelCheckGame Result", "Null")
+        vcg = vowelCheckGame()
+        (a,e,u,i,o) = vcg.vowelCheck(input)
+        output = "num_a = %d,\nnum_e = %d,\nnum_u = %d,\nnum_i = %dd,\nnum_o = %d"%(a,e,u,i,o)
+        QtWidgets.QMessageBox.information(self, "vowelCheckGame Result", output)
 
     def palindromeCheck(self):
         print ("in palindromeCheck mode")
@@ -118,7 +135,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 outputlist = inputlist.pop(index)
                 outputstr = "".join(outputlist) 
             '''
-
             self.OutputLine.setText(outputstr)
     def Exit(self):
         QtWidgets.QApplication.quit()

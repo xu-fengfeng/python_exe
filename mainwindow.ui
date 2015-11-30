@@ -26,13 +26,31 @@
       <x>10</x>
       <y>10</y>
       <width>331</width>
-      <height>153</height>
+      <height>187</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="mainlayout">
      <property name="sizeConstraint">
       <enum>QLayout::SetMaximumSize</enum>
      </property>
+     <item row="6" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="vowelcheck_Button">
+         <property name="text">
+          <string>vowelcheck</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="palindrome_Button">
+         <property name="text">
+          <string>palindrome</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item row="4" column="0">
       <widget class="QLabel" name="OutputLabel">
        <property name="sizePolicy">
@@ -43,6 +61,9 @@
        </property>
        <property name="text">
         <string>Output</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -112,25 +133,20 @@
        <property name="text">
         <string>Input</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
      </item>
-     <item row="6" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QPushButton" name="vowelcheck_Button">
-         <property name="text">
-          <string>vowelcheck</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="palindrome_Button">
-         <property name="text">
-          <string>palindrome</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+     <item row="7" column="1">
+      <widget class="QTextEdit" name="textEdit"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QPushButton" name="strcount_Button">
+       <property name="text">
+        <string>单词统计</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
