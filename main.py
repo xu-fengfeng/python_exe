@@ -79,8 +79,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.vowelcheck_Button.clicked.connect(self.vowelCheck)
         self.palindrome_Button.clicked.connect(self.palindromeCheck)
+        
+        self.wordstatisc_Button.clicked.connect(self.wordstatisc)
 
-    def vowelCheck(self):
+    def vowelCheck(self):          #元音统计
         print ("in vowelCheck mode")
         input = self.InputLine.text()
         if input == "":
@@ -90,7 +92,7 @@ class MainWindow(QtWidgets.QMainWindow):
         output = "num_a = %d,\nnum_e = %d,\nnum_u = %d,\nnum_i = %dd,\nnum_o = %d"%(a,e,u,i,o)
         QtWidgets.QMessageBox.information(self, "vowelCheckGame Result", output)
 
-    def palindromeCheck(self):
+    def palindromeCheck(self):    #拉丁猪游戏
         print ("in palindromeCheck mode")
         input = self.InputLine.text()
         if str == "":
@@ -100,7 +102,7 @@ class MainWindow(QtWidgets.QMainWindow):
         retstr = pcg.PalindromeCheck(input)
         QtWidgets.QMessageBox.information(self, "PalindromeCheckGame Result",retstr)
         
-    def valueChange(self):
+    def valueChange(self):          #回转字符
         str = self.InputLine.text()
         
         if str == "":
@@ -110,7 +112,14 @@ class MainWindow(QtWidgets.QMainWindow):
             newstr = self.reverseStr(str)
 
             self.OutputLine.setText(newstr)
-
+    def wordstatisc(self):
+        str = self.wordstatisc_txtbox.toPlainText();
+        print (str)
+        str_list = str.split(' ')
+        print (len(str_list))
+        output_mssage = "total %d words!"%len(str_list)
+        QtWidgets.QMessageBox.information(self, "result", output_mssage)
+    
     def reverseStr(self,str):
         newlist = list(str)
         newlist.reverse()
