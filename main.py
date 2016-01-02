@@ -67,6 +67,14 @@ class vowelCheckGame():
                 self.num_o+=1
         return (self.num_a, self.num_e, self.num_u, self.num_i, self.num_o)  
 
+class wordStatiscGame():
+    def __init__(self):
+        pass
+    def wordStatisc(self, str):       
+        wordlist = str.split(" ")
+        print (len(wordlist))
+        return len(wordlist)
+
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
@@ -114,10 +122,12 @@ class MainWindow(QtWidgets.QMainWindow):
             self.OutputLine.setText(newstr)
     def wordstatisc(self):
         str = self.wordstatisc_txtbox.toPlainText();
-        print (str)
-        str_list = str.split(' ')
-        print (len(str_list))
-        output_mssage = "total %d words!"%len(str_list)
+        wsg = wordStatiscGame()
+        len = wsg.wordStatisc(str)
+        #print (str)
+        #str_list = str.split(' ')
+        #print (len(str_list))
+        output_mssage = "total %d words!"%len #len(str_list)
         QtWidgets.QMessageBox.information(self, "result", output_mssage)
     
     def reverseStr(self,str):
