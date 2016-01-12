@@ -3,6 +3,8 @@ import sys
 from PyQt5 import QtWidgets,QtCore,QtGui
 from PyQt5.uic import loadUi
 
+from pyexe_texteditor import py_texteditor
+
 class LatinPigGame(object):
     def __init__(self):
         self.vowellist = "aeiuo"
@@ -90,6 +92,13 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.wordstatisc_Button.clicked.connect(self.wordstatisc)
 
+        self.actionTextedit.triggered.connect(self.texteditfunction)
+
+        
+    def texteditfunction(self):
+        print("----------------")
+        te = py_texteditor.py_texteditor(self)
+        
     def vowelCheck(self):          #元音统计
         print ("in vowelCheck mode")
         input = self.InputLine.text()

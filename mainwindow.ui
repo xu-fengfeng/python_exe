@@ -160,8 +160,26 @@
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>file</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuOther">
+    <property name="title">
+     <string>other</string>
+    </property>
+    <addaction name="actionTextedit"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuOther"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTextedit">
+   <property name="text">
+    <string>textedit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
