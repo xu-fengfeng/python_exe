@@ -12,40 +12,46 @@ class py_texteditor(QtWidgets.QMainWindow):
 
         self.setWindowTitle("py_texteditor")
         self.setWindowIcon(QtGui.QIcon("qt-logo.png"))
+        self.setGeometry(400,250,500,300)
         
-        #self.createActions()
-        #self.addmenubar()
-        
-        #self.setMinimumSize(240,160)
-        #self.resize(480,320)
-
+        self.createActions()
+        self.addmenubar()
+                
     def createActions(self):
-        self.newAct = QtWidgets.QAction("&New", self, shortcut=NULL,
+        self.newAction = QtWidgets.QAction("&New", self, shortcut=NULL,
                 statusTip="Create a new file", triggered=self.newFile)
-        self.closeAct = QtWidgets.QAction("&Close", self, shortcut=NULL,
-                statusTip="Close.",triggered = self.closeWindow)
-        
-        
-        self.copyAct = QtWidgets.QAction("&Copy", self, shortcut=NULL,
+        self.openAction = QtWidgets.QAction("&Open", self, shortcut=NULL,
+                statusTip="open a file", triggered=self.openFile)
+        self.closeAction = QtWidgets.QAction("&Close", self, shortcut=NULL,
+                statusTip="Close.",triggered = self.closeWindow)      
+        self.copyAction = QtWidgets.QAction("&Copy", self, shortcut=NULL,
                 statusTip="copy.", triggered = self.copyContent)
-            
+        self.aboutAction = QtWidgets.QAction("&About", self, shortcut=NULL,
+                statusTip="copy.", triggered = self.aboutFunction)
     def addmenubar(self):
-        self.filemenu = self.menuBar().addMenu("&File")
-        self.filemenu.addAction(self.newAct)
-        self.filemenu.addAction(self.closeAct)
+        self.menubar = self.menuBar()
+        self.filemenu = self.menubar.addMenu("&File")
+        self.editmenu = self.menubar.addMenu("&Edit")
+        self.aboutmenu = self.menubar.addMenu("&About")        
         
-        self.Editmenu = self.menuBar().addMenu("&Edit")
-        self.Editmenu.addAction(self.copyAct)
+        self.filemenu.addAction(self.newAction)
+        self.filemenu.addAction(self.openAction)
+        self.filemenu.addAction(self.closeAction)
         
-        self.Aboutmenu = self.menuBar().addMenu("&About")
+        self.editmenu.addAction(self.copyAction)
+        
+        self.aboutmenu.addAction(self.aboutAction)
               
     def newFile(self):
         pass
+    def openFile(self):
+        pass
     def closeWindow(self):
         pass    
-    
     def copyContent(self):
         pass  
+    def aboutFunction(self):
+        pass
         
 
 if __name__ == "__main__":
