@@ -3,6 +3,7 @@ import sys, os
 from PyQt5 import QtWidgets,QtCore,QtGui
 from PyQt5.uic import loadUi
 from _overlapped import NULL
+from PyQt5.Qt import QMainWindow
 
 class py_filemenu():
     def __init__(self, mainwindow):
@@ -36,6 +37,8 @@ class py_editmenu():
         self.copyAction = QtWidgets.QAction("&Copy", mainwindow, shortcut=NULL,
                 statusTip="copy.", triggered = self.copyContent)
         self.editmenu.addAction(self.copyAction)
+        
+        
     def copyContent(self):
         pass          
 
@@ -66,6 +69,30 @@ class py_texteditor(QtWidgets.QMainWindow):
         py_filemenu(self)
         py_editmenu(self)
         py_aboutmenu(self)
+
+        widget = QtWidgets.QWidget()
+        self.setCentralWidget(widget)
+                
+        self.vboxlayout = self.place_toplayout(widget)
+        self.hboxlayout = self.place_buttontextboxlayout_to_layout(self.vboxlayout)
+        
+    def place_buttontextboxlayout_to_layout(self,container):
+        textbox = QtWidgets.QTextEdit()
+        hboxlayout = QtWidgets.QHBoxLayout()
+        hboxlayout.addWidget(textbox)
+        hboxlayout.setStretch(1 , 100)   
+        container.addLayout(hboxlayout)
+        return hboxlayout
+        
+    def place_toplayout(self, container):
+        textbox = QtWidgets.QTextEdit()
+        
+        vboxlayout = QtWidgets.QVBoxLayout()
+  
+        vboxlayout.addWidget(textbox)
+        
+        container.setLayout(vboxlayout)
+        return vboxlayout
         
 
 if __name__ == "__main__":
@@ -75,12 +102,3 @@ if __name__ == "__main__":
     py_editor = py_texteditor()
     py_editor.show()
     sys.exit(app.exec_())
-    
-    #from PyQt5 import QtWidget
-    #app = QtWidgets.QApplication(sys.argv) 
-    #first_window = QtWidgets.QWidget()
-    #first_window = QtWidgets.QMainWindow()
-    #first_window = QtWidgets.QDialog()
-    
-    #first_window.show()
-    sys.exit(app.exec_())  
